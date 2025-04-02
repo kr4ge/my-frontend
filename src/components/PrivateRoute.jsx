@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import apiConn from "../api";
 
-// PrivateRoute: Protects routes from unauthorized access (login required)
+// PrivateRoute: Protects routes from unauthorized access
 function PrivateRoute({ children }) {
   const [hasAccess, setHasAccess] = useState(null);
 
