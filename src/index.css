@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #f3f3f3;
+  --font-family: "Poppins", sans-serif;
+  --heading-font-size: 4rem;
+  color-scheme: Light;
+  font-family: var(--font-family);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  min-height: 100vh;
+  background-position: center;
+  background: linear-gradient(
+    120deg,
+    rgb(255, 255, 255),
+    rgb(219, 215, 215),
+    rgb(201, 197, 197)
+  );
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: var(--heading-font-size);
+  color: var(--secondary-color);
+}
+
+.loading-holder {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 9999;
+  height: 100vh;
+  margin-top: 0;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.loading {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid var(--secondary-color);
+  border-top: 5px solid var(--primary-color);
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    margin-top: 120px;
+    display: block;
+    align-items: unset;
+    justify-content: unset;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .form-container {
+    padding: 20px;
+    width: 90%;
+  }
+}
