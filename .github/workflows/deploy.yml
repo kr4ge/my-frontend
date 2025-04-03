@@ -3,7 +3,7 @@ name: Deploy Frontend to EC2
 on:
   push:
     branches:
-      - main  # Trigger the workflow when you push to the main branch
+      - main
 
 jobs:
   build-and-deploy:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Set Node.js version for building the frontend
+        node-version: '18'
 
     - name: Login to DockerHub
       uses: docker/login-action@v1
