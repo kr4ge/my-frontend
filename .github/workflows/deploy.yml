@@ -37,16 +37,12 @@ jobs:
         echo "${{ secrets.AWS_EC2_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.AWS_EC2_IP }} << 'EOF'
-          # Create shared network if not exists
-          docker network create app-network || true
-          
-          # Deploy frontend
           docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
           docker stop frontend || true
           docker rm frontend || true
           docker run -d \
             --name frontend \
-            --network app-network \  # Added network
+            --network app-network \
             -p 8080:80 \
             ${{ secrets.DOCKER_USERNAME }}/frontend:latest
         EOF
