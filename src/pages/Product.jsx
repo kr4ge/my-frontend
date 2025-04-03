@@ -241,7 +241,7 @@ function ProductManager() {
                       onChange={handleChange}
                       className="form-radio"
                     />
-                    <span className="ml-2">Discontinued</span>
+                    <span className="ml-2">Inactive</span>
                   </label>
                 </div>
               </div>

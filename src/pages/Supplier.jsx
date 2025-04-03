@@ -32,7 +32,12 @@ function SupplierManager() {
     e.preventDefault();
     setIsLoading(true);
 
-    const supplierData = { supplierName, supplierPhone, supplierEmail, supplierAddress };
+    const supplierData = {
+      name: supplierName,
+      phone: supplierPhone,
+      email: supplierEmail,
+      address: supplierAddress,
+    };
 
     const request = isUpdating
       ? apiConn.put(`api/suppliers/${currentSupplierId}/`, supplierData)
