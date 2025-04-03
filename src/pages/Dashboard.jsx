@@ -16,11 +16,11 @@ import apiConn from "../api";
 function Dashboard() {
   const [overviewData, setOverviewData] = useState({
     customers: [],
-    suppliers: [],
     categories: [],
     products: [],
-    sales: [],
+    suppliers: [],
     purchases: [],
+    sales: [],
   });
   const [lowStockAlert, setLowStockAlert] = useState([]);
 
@@ -32,24 +32,24 @@ function Dashboard() {
           suppliersRes,
           categoriesRes,
           productsRes,
-          salesRes,
           purchasesRes,
+          salesRes,
         ] = await Promise.all([
           apiConn.get("api/customers/"),
-          apiConn.get("api/suppliers/"),
           apiConn.get("api/categories/"),
           apiConn.get("api/products/"),
-          apiConn.get("api/sales/"),
+          apiConn.get("api/suppliers/"),
           apiConn.get("api/purchases/"),
+          apiConn.get("api/sales/"),
         ]);
 
         setOverviewData({
           customers: customersRes.data.slice(0, 3),
-          suppliers: suppliersRes.data.slice(0, 3),
           categories: categoriesRes.data.slice(0, 3),
           products: productsRes.data.slice(0, 3),
-          sales: salesRes.data.slice(0, 3),
+          suppliers: suppliersRes.data.slice(0, 3),
           purchases: purchasesRes.data.slice(0, 3),
+          sales: salesRes.data.slice(0, 3),
         });
 
         const hasLowStock = productsRes.data.some(
@@ -95,13 +95,6 @@ function Dashboard() {
       icon: FaRegCircleUser,
     },
     {
-      title: "Suppliers",
-      key: "suppliers",
-      link: "/Supplier",
-      display: "name",
-      icon: FaTruckFast,
-    },
-    {
       title: "Categories",
       key: "categories",
       link: "/Category",
@@ -116,11 +109,11 @@ function Dashboard() {
       icon: FaBoxOpen,
     },
     {
-      title: "Sales",
-      key: "sales",
-      link: "/Sales",
-      display: "total",
-      icon: FaArrowTrendUp,
+      title: "Suppliers",
+      key: "suppliers",
+      link: "/Supplier",
+      display: "name",
+      icon: FaTruckFast,
     },
     {
       title: "Purchases",
@@ -129,11 +122,18 @@ function Dashboard() {
       display: "total",
       icon: FaCartArrowDown,
     },
+    {
+      title: "Sales",
+      key: "sales",
+      link: "/Sales",
+      display: "total",
+      icon: FaArrowTrendUp,
+    },
   ];
 
   return (
     <div className="p-6">
-      {/* 🔴 Low Stock Banner */}
+      {/* Low Stock Banner */}
       {lowStockAlert.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}

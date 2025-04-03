@@ -21,6 +21,7 @@ function UserLogin() {
         localStorage.setItem(ACCESS_KEY_TOKEN, data.access);
         localStorage.setItem(REFRESH_KEY_TOKEN, data.refresh);
         navigate("/");
+        window.location.reload();
       })
       .catch((error) => alert("Login failed! " + error))
       .finally(() => setLoading(false));
