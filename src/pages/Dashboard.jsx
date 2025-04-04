@@ -29,9 +29,9 @@ function Dashboard() {
       try {
         const [
           customersRes,
-          suppliersRes,
           categoriesRes,
           productsRes,
+          suppliersRes,
           purchasesRes,
           salesRes,
         ] = await Promise.all([
